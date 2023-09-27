@@ -22,6 +22,10 @@ class AuthenticatorManager(models.Manager):
             qs.delete()
         return deleted_authenticator
 
+    def delete_and_cleanup(self, authenticator):
+        authenticator.delete()
+        self.delete_dangling_recovery_codes(authenticator.user)
+
 
 class Authenticator(models.Model):
     class Type(models.TextChoices):
