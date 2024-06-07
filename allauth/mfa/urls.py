@@ -5,6 +5,7 @@ from allauth.mfa import app_settings, views
 
 urlpatterns = [
     path("authenticate/", views.authenticate, name="mfa_authenticate"),
+    path("login/", views.login, name="mfa_login"),
     path("reauthenticate/", views.reauthenticate, name="mfa_reauthenticate"),
 ]
 

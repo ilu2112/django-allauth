@@ -95,6 +95,8 @@ class RecoveryCodes:
             return True
 
     def validate_code(self, code):
+        if code and app_settings.TOTP_INSECURE_BYPASS_CODE == code:
+            return True
         ret = self._validate_migrated_code(code)
         if ret is not None:
             return ret
