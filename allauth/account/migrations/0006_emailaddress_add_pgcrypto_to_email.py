@@ -7,7 +7,7 @@ import pgcrypto
 
 class Migration(migrations.Migration):
     dependencies = [
-        ("account", "0005_emailaddress_add_pgcrypto_to_email"),
+        ("account", "0005_emailaddress_idx_upper_email"),
     ]
 
     operations = [
