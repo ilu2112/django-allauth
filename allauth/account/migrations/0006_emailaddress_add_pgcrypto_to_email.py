@@ -2,6 +2,7 @@
 
 import django.db.models.functions.text
 from django.db import migrations, models
+import pgcrypto
 
 
 class Migration(migrations.Migration):
