@@ -10,6 +10,8 @@ from django.db.models.functions import Upper
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
+import pgcrypto
+
 from . import app_settings, signals
 from .adapter import get_adapter
 from .managers import EmailAddressManager, EmailConfirmationManager
@@ -21,7 +23,7 @@ class EmailAddress(models.Model):
         verbose_name=_("user"),
         on_delete=models.CASCADE,
     )
-    email = models.EmailField(
+    email = pgcrypto.EncryptedEmailField(
         max_length=app_settings.EMAIL_MAX_LENGTH,
         verbose_name=_("email address"),
     )
